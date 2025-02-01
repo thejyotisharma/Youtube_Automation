@@ -14,6 +14,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.logging.Level;
 
 public class TestCases extends ExcelDataProvider { // Lets us read the data
@@ -72,15 +73,34 @@ public class TestCases extends ExcelDataProvider { // Lets us read the data
         wrapper.clickElement(showMoreButton);
 
         String playlistName = wrapper.getText(By.xpath("((//div[contains(@class,'yt-lockup-view-model-wiz--compact')][last()])//a/span)[last()]"));
-        System.out.println("playlist: "+playlistName);
+        System.out.println("playlist: " + playlistName);
 
         String titleCount = wrapper.getText(By.xpath("((//div[contains(@class,'yt-lockup-view-model-wiz--compact')][last()])//div[@class='badge-shape-wiz__text'])[last()]"));
-        System.out.println("titleCount: "+titleCount);
-        if (Integer.parseInt(titleCount.split(" ")[0]) <= 50){
+        System.out.println("titleCount: " + titleCount);
+        if (Integer.parseInt(titleCount.split(" ")[0]) <= 50) {
             System.out.println("pass: Title count is less than 50");
-        }else{
+        } else {
             System.out.println("fail: Title count is greater than 50");
         }
+    }
+
+    @Test
+    public void testCases04() {
+        wrapper.clickElement(By.xpath("//a[@id='endpoint' and @title='News']"));
+        System.out.println("News page opened");
+
+        int likesCount = 0;
+        for (int i = 1; i <= 3; i++) {
+            String titleXpath = "(//span[text()='Latest news posts']//ancestor::div[5])//div[@id='contents-container']/div//ytd-rich-item-renderer[" + i + "]//div[@id='body']";
+            System.out.println("Title for " + i + " news is:" + wrapper.getText(By.xpath(titleXpath)));
+
+            String likesXpath = "(//span[text()='Latest news posts']//ancestor::div[5])//div[@id='contents-container']/div//ytd-rich-item-renderer[" + i + "]//span[@id='vote-count-middle']";
+            String likesString = wrapper.getText(By.xpath(likesXpath));
+            if (!likesString.equals("")){
+                likesCount += Integer.parseInt(likesString);
+            }
+        }
+        System.out.println("Total like count: " + likesCount);
     }
 
     /*
