@@ -1,28 +1,20 @@
 package demo;
 
+import demo.utils.ExcelDataProvider;
+import demo.wrappers.Wrappers;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 import java.util.logging.Level;
-
-import demo.utils.ExcelDataProvider;
-// import io.github.bonigarcia.wdm.WebDriverManager;
-import demo.wrappers.Wrappers;
 
 public class TestCases extends ExcelDataProvider { // Lets us read the data
     ChromeDriver driver;
@@ -30,7 +22,6 @@ public class TestCases extends ExcelDataProvider { // Lets us read the data
 
     @Test
     public void testCase01() {
-        driver.get("https://www.youtube.com/");
         String expectedUrl = "https://www.youtube.com/";
         String actualUrl = driver.getCurrentUrl();
         System.out.println(actualUrl);
@@ -45,6 +36,7 @@ public class TestCases extends ExcelDataProvider { // Lets us read the data
     @Test
     public void testCase02() throws InterruptedException {
         driver.get("https://www.youtube.com/");
+
         wrapper.clickElement(By.xpath("//a[@id='endpoint' and @title='Movies']"));
         System.out.println("Movies page opened");
         String rightArrowXPath = "//span[text()='Top selling']//ancestor::div[@id='dismissible']/div[2]//div[@id='right-arrow']//button[@aria-label='Next']";
@@ -70,6 +62,26 @@ public class TestCases extends ExcelDataProvider { // Lets us read the data
         }
     }
 
+    @Test
+    public void testCases03() {
+        wrapper.clickElement(By.xpath("//a[@id='endpoint' and @title='Music']"));
+        System.out.println("Music page opened");
+
+        By showMoreButton = By.xpath("(//button[@aria-label='Show more'])[last()]");
+        wrapper.waitandscrollToElement(showMoreButton);
+        wrapper.clickElement(showMoreButton);
+
+        String playlistName = wrapper.getText(By.xpath("((//div[contains(@class,'yt-lockup-view-model-wiz--compact')][last()])//a/span)[last()]"));
+        System.out.println("playlist: "+playlistName);
+
+        String titleCount = wrapper.getText(By.xpath("((//div[contains(@class,'yt-lockup-view-model-wiz--compact')][last()])//div[@class='badge-shape-wiz__text'])[last()]"));
+        System.out.println("titleCount: "+titleCount);
+        if (Integer.parseInt(titleCount.split(" ")[0]) <= 50){
+            System.out.println("pass: Title count is less than 50");
+        }else{
+            System.out.println("fail: Title count is greater than 50");
+        }
+    }
 
     /*
      * TODO: Write your tests here with testng @Test annotation.
@@ -101,6 +113,7 @@ public class TestCases extends ExcelDataProvider { // Lets us read the data
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
+        driver.get("https://www.youtube.com/");
         wrapper = new Wrappers(driver);
     }
 
