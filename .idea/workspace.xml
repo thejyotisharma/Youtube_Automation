@@ -7,6 +7,7 @@
     <list default="true" id="c6539c11-72f4-4fd3-a856-366294cdad11" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/demo/TestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/demo/TestCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/demo/wrappers/Wrappers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/demo/wrappers/Wrappers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
-  <component name="RunManager" selected="Gradle.TestCases.testCases04">
+  <component name="RunManager" selected="Gradle.TestCases">
     <configuration name="TestCases" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -135,12 +136,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestCases.youtubeIntro" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestCases.testCases05" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;demo.TestCases.youtubeIntro&quot;" />
+        <option name="scriptParameters" value="--tests &quot;demo.TestCases.testCases05&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -167,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestCases.testCases04" />
         <item itemvalue="Gradle.TestCases" />
-        <item itemvalue="Gradle.TestCases.testCases03" />
         <item itemvalue="Gradle.TestCases.testCase02" />
-        <item itemvalue="Gradle.TestCases.youtubeIntro" />
+        <item itemvalue="Gradle.TestCases.testCases05" />
+        <item itemvalue="Gradle.TestCases.testCases04" />
+        <item itemvalue="Gradle.TestCases.testCases03" />
       </list>
     </recent_temporary>
   </component>
